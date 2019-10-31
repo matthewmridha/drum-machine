@@ -1,13 +1,274 @@
+@import url('//fonts.googleapis.com/css?family=Orbitron&display=swap');
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    border: 0px;
+    margin: 0px;
+    background: url("https://singularityhub.com/wp-content/uploads/2019/05/retro-synthwave-computer-landscape-palm-trees-shutterstock-1022092345-900x506.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Orbitron', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+:focus {
+    outline: 1px solid grey;
+}
+
+body.usingMouse :focus {
+    outline: none;
+}
+
+
+/* Main Conatiner */
+
+.drum-machine {
+    background: rgba(255, 255, 255, 0);
+    height: auto;
+    min-height: 300px;
+    width: 75vw;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    border: 3px solid rgba(102, 255, 102, 0.7);
+    border-bottom: 3px solid rgba(233, 54, 167, 0.7);
+}
+
+
+/* Grid wrapper for the drumpads/keys */
+
+.drum-pad-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    justify-content: center;
+    align-content: center;
+    width: 50%;
+    height: auto;
+}
+
+
+/* Drumpads / keys */
+
+.drum-pad {
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #EE34D2;
+    border-left: 1px solid #EE34D2;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 5px;
+    box-shadow: -0.6px 5px #FF6EFF;
+    background-color: #50BFE6;
+    color: #FF00CC;
+    text-shadow: -2px 1px 2px #FF6EFF;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* When drum-pads are active */
+
+.activeStyle {
+    background-color: #FF355E;
+    color: #CCFF00;
+    box-shadow: 0 1px #FF6EFF;
+    transform: translateY(4px);
+}
+
+
+/* Sidebar, right side, contains display, power, volume */
+
+.sideBar {
+    background-color: rgba(255, 153, 51, 0.3);
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Items nested in sidebar */
+
+.sidebarItems {
+    margin: 15px;
+}
+
+
+/* Display */
+
+.display {
+    border: 2px solid #FF00CC;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    color: purple;
+    background-image: linear-gradient(to bottom right, #ff33cc 0%, #3399ff 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#keyDisplay {
+    justify-self: center;
+    align-self: center;
+    margin-top: 50%;
+    margin-bottom: -15px;
+}
+
+
+/* Volume Control */
+
+.volumeArea {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+    justify-content: center;
+}
+
+#volSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#controls {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Volume slider */
+
+.slidecontainer {
+    width: 100%;
+    /* Width of the outside container */
+}
+
+
+/* The slider itself */
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 1px;
+    /* Specified height */
+    background: white;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.8;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+
+/* Mouse-over effects */
+
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 10px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: rgba(102, 255, 102, 1);
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: rgba(102, 255, 102, 1);
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+
+/* Power Button */
+
+.power {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    box-shadow: 0px 3px grey;
+    border: 1px solid silver;
+    background: url("https://cdn.pixabay.com/photo/2014/09/01/01/07/aluminium-432524_960_720.jpg");
+}
+
+.powerClick {
+    box-shadow: none;
+    transform: translateY(3px);
+}
+
+@media (max-width: 600px) {
+    .drum-machine {
+        flex-direction: column-reverse;
+        margin: none;
+        padding: none;
+        border: none;
+        width: 100vw;
+        height: 100vh;
+        justify-content: stretch;
+        align-items: stretch;
+        background: linear-gradient(to bottom, #000066 0%, #cc0099 100%);
+        background-image: url('https://i.pinimg.com/originals/9b/f6/5c/9bf65cadfdf7e3d783a810aa8854f6e9.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    .drum-pad-wrapper {
+        width: 100%;
+        height: 50%;
+        border: none;
+    }
+    .sideBar {
+        width: 100%;
+        height: 50%;
+        margin-top: 0px;
+        background: none;
+    }
+    .slidecontainer {
+        width: 50%;
+    }
+    .display {
+        width: 150px;
+        height: 150px;
+    }
+    #controls {
+        width: 50%;
+    }
 }
